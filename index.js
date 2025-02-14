@@ -15,10 +15,12 @@ app.use(express.json());
 app.use(urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:"http://localhost:5173", //front end kaha run hoga uska origin //since react vite 5173
-    credentials:true
-}
+  origin: "https://expensify-frontend-nine.vercel.app", // Updated to the deployed frontend URL
+  credentials: true
+};
+
 app.use(cors(corsOptions));
+
 
 //api
 app.use("/api/v1/user", userRoute); // http:localhost:5173/api/v1/user/register

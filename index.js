@@ -15,11 +15,12 @@ app.use(express.json());
 app.use(urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-  origin: "https://expensify-frontend-nine.vercel.app", // Updated to the deployed frontend URL
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+    origin: process.env.NODE_ENV === "production"
+      ? "https://expensify-frontend-nine.vercel.app"
+      : "http://localhost:5173",
+    credentials: true
+  };
+  app.use(cors(corsOptions));
 
 
 //api
